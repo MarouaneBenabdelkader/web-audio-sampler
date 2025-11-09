@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Load a sound sample using fetch, decode it and play it using Web Audio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- type="module" is necessary if the main.js file is using import / export (aka ES/JS modules)
+     Try removing it and see what happens in the debug console! -->
+    <script src="js/main.js" type="module"></script>
+</head>
+
+<body>
+    <h1>Multi-Sound Sample Player with Waveform and Trim Bars</h1>
+    <p>Click on a sound button to select it, view its waveform, and play it. Drag the trim bars to adjust start and end points. Each sound remembers its trim bar positions!</p>
+    <div id="playButton">Loading sounds...</div>
+    
+    <div class="wrapper">
+        <canvas id="myCanvas" width=600 height=100></canvas>
+        <canvas id="myCanvasOverlay" width=600 height=100></canvas>
+    </div>
+    
+    <div id="instructions">
+        <h3>📖 Instructions:</h3>
+        <ul>
+            <li>🎵 Click any sound button to select and play it</li>
+            <li>📊 The waveform shows the audio visualization</li>S
+            <li>✂️ Drag the white trim bars to set start/end points</li>
+            <li>💾 Each sound remembers its trim positions</li>
+            <li>🔊 Click again to replay with current trim settings</li>
+        </ul>
+    </div>
+</body>
+
+</html>     

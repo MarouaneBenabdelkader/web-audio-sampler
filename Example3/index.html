@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Load a sound sample using fetch, decode it and play it using Web Audio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- type="module" is necessary if the main.js file is using import / export (aka ES/JS modules)
+     Try removing it and see what happens in the debug console! -->
+    <script src="js/main.js" type="module"></script>
+</head>
+
+<body>
+    <h1>Preset-Based Sound Player with REST API</h1>
+    <p>Select a preset from the dropdown menu to load different sound collections from the server.</p>
+    <div id="buttonsContainer"></div>
+    
+    <div id="instructions">
+        <h3>📖 How to Use:</h3>
+        <ul>
+            <li>🎹 Select a preset from the dropdown menu</li>
+            <li>🎵 Click any sound button to play it</li>
+            <li>🔄 Switch presets to load different sound collections</li>
+            <li>🌐 Sounds are loaded dynamically from the REST API server</li>
+        </ul>
+        <h3>🛠️ Server Setup:</h3>
+        <ol>
+            <li>Open terminal in the <code>server</code> directory</li>
+            <li>Run <code>npm install</code> (first time only)</li>
+            <li>Run <code>npm run start</code></li>
+            <li>Server should be running at <code>http://localhost:3000</code></li>
+            <li>Test: Open <code>http://localhost:3000/api/presets</code> in browser</li>
+        </ol>
+    </div>
+</body>
+
+</html>

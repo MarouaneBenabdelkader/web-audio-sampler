@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 5 - Advanced Sampler with Progress Bars</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <h1>🎹 Advanced Web Audio Sampler</h1>
+    <p>Load sounds with progress tracking, play with mouse or MIDI controller</p>
+    
+    <div class="controls-section">
+        <button id="loadAllBtn" class="action-btn">📥 Load All Sounds</button>
+        <button id="clearAllBtn" class="action-btn">🗑️ Clear All</button>
+        
+        <div class="midi-section">
+            <label for="midiSelect">🎛️ MIDI Device:</label>
+            <select id="midiSelect" disabled>
+                <option>No MIDI devices found</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="global-progress">
+        <label>Overall Progress:</label>
+        <progress id="globalProgress" max="100" value="0"></progress>
+        <span id="globalProgressText">0%</span>
+    </div>
+    
+    <div id="sampler-grid" class="sampler-grid">
+        <!-- Pads will be generated here -->
+    </div>
+    
+    <div class="info-section">
+        <h3>📖 Instructions:</h3>
+        <ul>
+            <li>🖱️ Click "Load All Sounds" to download samples</li>
+            <li>🎵 Click pads to play sounds</li>
+            <li>🎹 Connect a MIDI controller and select it from dropdown</li>
+            <li>📊 Watch individual progress bars for each pad</li>
+            <li>⚠️ Failed loads will be shown in red</li>
+        </ul>
+        
+        <h3>🎹 MIDI Mapping:</h3>
+        <p>MIDI notes 36-51 map to pads (bottom-left to top-right)</p>
+        <p>Pads fill from bottom to top, left to right</p>
+    </div>
+    
+    <script src="js/sampler-engine.js" type="module"></script>
+    <script src="js/sampler-gui.js" type="module"></script>
+    <script src="js/main.js" type="module"></script>
+</body>
+</html>

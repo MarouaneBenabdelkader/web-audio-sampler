@@ -1,0 +1,345 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #0a0e27;
+    background-image: 
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 50px,
+            rgba(255, 255, 255, 0.03) 50px,
+            rgba(255, 255, 255, 0.03) 51px
+        ),
+        linear-gradient(180deg, #0a0e27 0%, #1a1f3a 50%, #0a0e27 100%);
+    min-height: 100vh;
+    padding: 40px 20px;
+    color: #fff;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Musical note decorations */
+body::before {
+    content: '♪ ♫ ♪ ♫ ♪ ♫ ♪ ♫ ♪ ♫';
+    position: fixed;
+    top: 10px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
+    color: rgba(255, 107, 107, 0.2);
+    animation: float 10s ease-in-out infinite;
+    z-index: 0;
+}
+
+body::after {
+    content: '♫ ♪ ♫ ♪ ♫ ♪ ♫ ♪ ♫ ♪';
+    position: fixed;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
+    color: rgba(72, 219, 251, 0.2);
+    animation: float 12s ease-in-out infinite reverse;
+    z-index: 0;
+}
+
+h1 {
+    color: #ff6b6b;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    text-shadow: 0 0 10px rgba(255, 107, 107, 0.5),
+                 0 0 20px rgba(255, 107, 107, 0.3);
+    animation: fadeIn 0.8s ease-in, glow 2s ease-in-out infinite alternate;
+    position: relative;
+    z-index: 1;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+h1::before {
+    content: '🎵 ';
+}
+
+h1::after {
+    content: ' 🎵';
+}
+
+h3 {
+    color: #48dbfb;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+p {
+    color: #c5d9f7;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 1;
+}
+
+#buttonsContainer {
+    text-align: center;
+    margin: 30px auto;
+    max-width: 900px;
+    padding: 30px;
+    background: linear-gradient(145deg, rgba(26, 31, 58, 0.95), rgba(15, 18, 35, 0.95));
+    border-radius: 20px;
+    box-shadow: 
+        0 15px 50px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 0 30px rgba(255, 107, 107, 0.1);
+    border: 2px solid rgba(255, 107, 107, 0.3);
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(10px);
+}
+
+#buttonsContainer::before {
+    content: '🎹 Select a Sound 🎹';
+    display: block;
+    font-size: 1.2em;
+    color: #ff6b6b;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+}
+
+.playButton {
+    padding: 15px 25px;
+    margin: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 6px 20px rgba(255, 107, 107, 0.4),
+        inset 0 -2px 5px rgba(0, 0, 0, 0.2),
+        inset 0 1px 2px rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.playButton::before {
+    content: '▶ ';
+    font-size: 0.9em;
+    margin-right: 5px;
+}
+
+.playButton:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 
+        0 10px 30px rgba(255, 107, 107, 0.6),
+        0 0 20px rgba(255, 107, 107, 0.4),
+        inset 0 -2px 5px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #ff8787 0%, #ff6b6b 100%);
+}
+
+.playButton:active,
+.playButton.active {
+    transform: translateY(0) scale(1.1);
+    box-shadow: 
+        0 0 30px rgba(255, 215, 0, 0.8),
+        0 0 50px rgba(255, 215, 0, 0.5),
+        inset 0 0 20px rgba(255, 215, 0, 0.3);
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+    color: #000;
+}
+
+/* Alternate button colors for variety */
+.playButton:nth-child(2n) {
+    background: linear-gradient(135deg, #48dbfb 0%, #0abde3 100%);
+    box-shadow: 
+        0 6px 20px rgba(72, 219, 251, 0.4),
+        inset 0 -2px 5px rgba(0, 0, 0, 0.2),
+        inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.playButton:nth-child(2n):hover {
+    background: linear-gradient(135deg, #74e3fc 0%, #48dbfb 100%);
+    box-shadow: 
+        0 10px 30px rgba(72, 219, 251, 0.6),
+        0 0 20px rgba(72, 219, 251, 0.4);
+}
+
+.playButton:nth-child(3n) {
+    background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
+    box-shadow: 
+        0 6px 20px rgba(162, 155, 254, 0.4),
+        inset 0 -2px 5px rgba(0, 0, 0, 0.2),
+        inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.playButton:nth-child(3n):hover {
+    background: linear-gradient(135deg, #b5afff 0%, #a29bfe 100%);
+    box-shadow: 
+        0 10px 30px rgba(162, 155, 254, 0.6),
+        0 0 20px rgba(162, 155, 254, 0.4);
+}
+
+#playButton {
+    text-align: center;
+    font-size: 1.3em;
+    color: #ff6b6b;
+    font-weight: 700;
+    animation: pulse 1.5s ease-in-out infinite;
+    padding: 20px;
+}
+
+.wrapper {
+    position: relative;
+    width: 600px;
+    height: 100px;
+    margin: 40px auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(72, 219, 251, 0.2);
+    border: 2px solid rgba(72, 219, 251, 0.4);
+}
+
+.wrapper canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#myCanvas {
+    border: none;
+    background-color: #0f1220;
+    z-index: 0;
+}
+
+#myCanvasOverlay {
+    border: none;
+    position: absolute;
+    z-index: 10;
+    cursor: crosshair;
+}
+
+#instructions {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 25px;
+    background: linear-gradient(145deg, rgba(26, 31, 58, 0.9), rgba(15, 18, 35, 0.9));
+    border-radius: 15px;
+    border: 2px solid rgba(162, 155, 254, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+#instructions ul {
+    list-style: none;
+    padding: 0;
+}
+
+#instructions li {
+    padding: 10px 0;
+    color: #c5d9f7;
+    font-size: 1.05em;
+    line-height: 1.6;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#instructions li:last-child {
+    border-bottom: none;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px rgba(255, 107, 107, 0.5),
+                     0 0 20px rgba(255, 107, 107, 0.3);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(255, 107, 107, 0.8),
+                     0 0 30px rgba(255, 107, 107, 0.5),
+                     0 0 40px rgba(255, 107, 107, 0.3);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.05);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    p {
+        font-size: 1em;
+    }
+    
+    #buttonsContainer {
+        padding: 20px;
+    }
+    
+    .playButton {
+        display: block;
+        width: 90%;
+        max-width: 300px;
+        margin: 10px auto;
+    }
+    
+    .wrapper {
+        width: 95%;
+        max-width: 600px;
+    }
+    
+    #myCanvas,
+    #myCanvasOverlay {
+        width: 100%;
+    }
+}

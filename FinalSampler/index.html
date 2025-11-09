@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Sampler - WAM Inspired</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🎹 Professional Sampler</h1>
+            <p class="subtitle">WAM-Inspired Audio Workstation with Waveform & Trim Bars</p>
+        </header>
+
+        <!-- Controls Panel -->
+        <section class="controls-panel">
+            <div class="control-group">
+                <label for="preset-select">Preset:</label>
+                <select id="preset-select">
+                    <option value="">-- Select Preset --</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="volume-slider">Volume:</label>
+                <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1">
+                <span id="volume-value">100%</span>
+            </div>
+
+            <div class="control-group">
+                <button id="clear-btn" class="btn btn-danger">Clear All</button>
+            </div>
+
+            <div class="status-container">
+                <div id="status-message" class="status-info">Ready</div>
+            </div>
+        </section>
+
+        <!-- Main Layout: Grid + Waveform -->
+        <section class="main-layout">
+            <!-- Left: Sampler Grid -->
+            <div class="sampler-section">
+                <h2>Sampler Pads (4x4)</h2>
+                <div id="sampler-grid" class="sampler-grid"></div>
+                <div class="keyboard-hint">
+                    <strong>Keyboard Shortcuts:</strong><br>
+                    Q W E R | A S D F | Z X C V | 1 2 3 4
+                </div>
+            </div>
+
+            <!-- Right: Waveform & Trim Bars -->
+            <div class="waveform-section">
+                <h2>Waveform Visualization</h2>
+                <p class="waveform-hint">Click a loaded pad to view its waveform. Drag trim bars to adjust playback region.</p>
+                
+                <div class="canvas-container">
+                    <canvas id="waveform-canvas" width="800" height="200"></canvas>
+                    <canvas id="trim-canvas" width="800" height="200"></canvas>
+                </div>
+
+                <div id="info-display" class="info-display">
+                    <em>Select a loaded pad to view details</em>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Info -->
+        <footer>
+            <div class="features">
+                <div class="feature">
+                    <strong>✅ Features:</strong>
+                    <ul>
+                        <li>REST API Preset Loading</li>
+                        <li>Progress Tracking (Promise.allSettled)</li>
+                        <li>Waveform Visualization</li>
+                        <li>Draggable Trim Bars</li>
+                        <li>MIDI Controller Support</li>
+                        <li>Headless Engine (Testable)</li>
+                        <li>Keyboard Shortcuts</li>
+                    </ul>
+                </div>
+                <div class="feature">
+                    <strong>🏗️ Architecture:</strong>
+                    <ul>
+                        <li><code>SamplerEngine</code> - Headless audio processing</li>
+                        <li><code>SamplerGUI</code> - Visual interface (separated)</li>
+                        <li><code>SoundSample</code> - Individual sample class</li>
+                        <li><code>WaveformDrawer</code> - Waveform visualization</li>
+                        <li><code>TrimbarsDrawer</code> - Interactive trim bars</li>
+                        <li>Observer Pattern for events</li>
+                        <li>MVC/MVVM separation</li>
+                    </ul>
+                </div>
+                <div class="feature">
+                    <strong>🎮 Console Commands:</strong>
+                    <ul>
+                        <li><code>engine.getStatus()</code> - Engine info</li>
+                        <li><code>engine.playSound(0)</code> - Play pad 0</li>
+                        <li><code>engine.clearAll()</code> - Clear samples</li>
+                        <li><code>gui.getMIDIDevices()</code> - MIDI devices</li>
+                        <li><code>testHeadless()</code> - Test without GUI</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="credits">
+                <p>
+                    <strong>Design Patterns:</strong> Facade (simple API), Observer (events), MVC (separation)<br>
+                    <strong>Inspired by:</strong> WAM Plugin Architecture (Example 4) + Exercise 2 (Waveform) + Exercise 3 (REST API) + Exercise 5 (Progress Bars)
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Load as ES6 modules -->
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

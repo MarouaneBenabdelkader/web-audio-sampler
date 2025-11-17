@@ -77,3 +77,13 @@ You will find several examples:
 - Example 3: shows how to use Promise.all (we saw that in the course about JavaScript promises) in order to load and decode in parallel multiple sounds. Once decoded, for each sound a PLAY button is generated, and once clicked, a small audio graph is built for playing the sound.
 - Example 4: is the same of Example3 except that we loaded a WAM Sampler (a web audio plugin, simular to VST plugins but for the Web). WAM means "Web Audio Modules". Play with this sampler (use the drop down menu, activate the keyboard, use trim bars and effects etc.).
   Look at the code used to load this plugin (host.js), to get an idea of how inter-operable plugins are designed. Noticed how the sampler is connected to the Web Audio Graph: like any AudioNode... However it is composed internally of multiple audio nodes. What is this design pattern?
+
+-
+## Authors / Auteurs
+
+- Marouane Benabdelkader
+- Ahmed Tamani
+
+
+
+
